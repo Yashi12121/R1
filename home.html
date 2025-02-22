@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>YashiX - Home</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Roboto+Mono:wght@700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000;
+            font-family: 'Orbitron', sans-serif;
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            font-weight: 900;
+        }
+
+        .header {
+            text-align: center;
+            padding: 2vw 2vw;
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            z-index: 10;
+            position: relative;
+        }
+
+        .logo {
+            font-size: clamp(40px, 10vw, 60px); /* ขนาดปรับตามหน้าจอ */
+            color: #fff;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.3);
+            letter-spacing: 3px;
+            animation: neonPulse 1.5s infinite ease-in-out;
+            font-weight: 900;
+            transform: perspective(400px) rotateX(10deg) translateZ(10px);
+            position: relative;
+        }
+
+        @keyframes neonPulse {
+            0%, 100% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.3); }
+            50% { text-shadow: 0 0 15px rgba(255, 255, 255, 0.7), 0 0 30px rgba(255, 255, 255, 0.5); }
+        }
+
+        .nav-menu {
+            margin: 1.5vw 0;
+            display: flex;
+            justify-content: center;
+            gap: clamp(10px, 2vw, 20px);
+            padding: 1vw 0;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 30px;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+            transform: perspective(300px) rotateX(5deg);
+            z-index: 10;
+            position: relative;
+            flex-wrap: wrap; /* ป้องกันเมนูล้นในหน้าจอเล็ก */
+        }
+
+        .nav-menu a {
+            color: #fff;
+            text-decoration: none;
+            font-size: clamp(14px, 3vw, 16px);
+            padding: 6px 20px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            z-index: 1;
+            font-weight: 900;
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 2px 8px rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-menu a:hover {
+            color: #000;
+            background: #fff;
+            transform: translateZ(3px);
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.6);
+        }
+
+        .main-content {
+            text-align: center;
+            padding: clamp(20px, 8vw, 60px) 20px;
+            animation: fadeIn 1.5s ease-out;
+            z-index: 10;
+            position: relative;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .main-content h1 {
+            font-size: clamp(30px, 10vw, 60px);
+            color: #fff;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+            letter-spacing: 3px;
+            animation: glowPulse 2s infinite;
+            font-weight: 900;
+            transform: perspective(500px) rotateX(3deg) translateZ(8px);
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { text-shadow: 0 0 15px rgba(255, 255, 255, 0.6); }
+            50% { text-shadow: 0 0 25px rgba(255, 255, 255, 0.9); }
+        }
+
+        .main-content p {
+            font-size: clamp(14px, 3vw, 18px);
+            color: #fff;
+            margin-bottom: 30px;
+            font-family: 'Roboto Mono', monospace;
+            letter-spacing: 1px;
+            font-weight: 700;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+            transform: perspective(200px) rotateX(2deg);
+        }
+
+        .download-btn {
+            padding: clamp(8px, 2vw, 12px) clamp(20px, 4vw, 40px);
+            background: #fff;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: clamp(14px, 3vw, 18px);
+            color: #000;
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.5);
+            transition: all 0.4s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            font-weight: 900;
+            transform: perspective(600px) rotateX(5deg) translateZ(15px);
+        }
+
+        .download-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(0, 0, 0, 0.3), transparent);
+            transition: all 0.5s ease;
+            z-index: -1;
+        }
+
+        .download-btn:hover::before {
+            left: 100%;
+        }
+
+        .download-btn:hover {
+            background: #000;
+            color: #fff;
+            transform: perspective(600px) rotateX(5deg) translateZ(20px);
+            box-shadow: 0 12px 30px rgba(255, 255, 255, 0.7);
+        }
+
+        .background-effects {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .moving-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.02) 0%, transparent 50%);
+            animation: bgMove 15s infinite linear;
+            opacity: 0.4;
+            z-index: -2;
+        }
+
+        @keyframes bgMove {
+            0% { transform: scale(1) translate(0, 0); }
+            25% { transform: scale(1.03) translate(-30px, -30px); }
+            50% { transform: scale(1.06) translate(30px, 30px); }
+            75% { transform: scale(1.03) translate(-30px, 30px); }
+            100% { transform: scale(1) translate(0, 0); }
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #fff;
+            border-radius: 50%;
+            animation: float 5s infinite ease-in-out, pulse 1.5s infinite;
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+            transform: perspective(300px) rotateX(15deg);
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) translateX(0) perspective(300px) rotateX(15deg); opacity: 0.4; }
+            50% { transform: translateY(-40px) translateX(30px) perspective(300px) rotateX(15deg); opacity: 0.8; }
+            100% { transform: translateY(0) translateX(0) perspective(300px) rotateX(15deg); opacity: 0.4; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1) perspective(300px) rotateX(15deg); }
+            50% { transform: scale(1.1) perspective(300px) rotateX(15deg); }
+        }
+
+        .ripple {
+            position: absolute;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.15), transparent);
+            border-radius: 50%;
+            animation: rippleEffect 0.8s ease-out;
+            pointer-events: none;
+            transform: perspective(400px) rotateX(8deg);
+        }
+
+        @keyframes rippleEffect {
+            0% { width: 0; height: 0; opacity: 1; }
+            100% { width: 200px; height: 200px; opacity: 0; }
+        }
+
+        .line-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(135deg, transparent, transparent 20px, rgba(255, 255, 255, 0.01) 20px, rgba(255, 255, 255, 0.01) 22px);
+            opacity: 0.3;
+            z-index: -2;
+            animation: lineShift 10s linear infinite;
+            transform: perspective(600px) rotateX(3deg);
+        }
+
+        @keyframes lineShift {
+            0% { background-position: 0 0; }
+            100% { background-position: 22px 22px; }
+        }
+
+        /* Media Queries สำหรับมือถือ */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: clamp(30px, 8vw, 40px);
+            }
+            .nav-menu {
+                gap: 10px;
+                padding: 8px 0;
+            }
+            .nav-menu a {
+                font-size: clamp(12px, 2.5vw, 14px);
+                padding: 5px 15px;
+            }
+            .main-content h1 {
+                font-size: clamp(24px, 8vw, 40px);
+            }
+            .main-content p {
+                font-size: clamp(12px, 2.5vw, 16px);
+            }
+            .download-btn {
+                padding: clamp(6px, 1.5vw, 10px) clamp(15px, 3vw, 30px);
+                font-size: clamp(12px, 2.5vw, 16px);
+            }
+            .particle, .ripple {
+                display: none; /* ปิดอนิเมชัน particle บนมือถือเพื่อลดการใช้งาน CPU */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">YX</div>
+    </div>
+    <div class="nav-menu">
+        <a href="#how-it-works">How It Works</a>
+        <a href="#features">Features</a>
+        <a href="#sources">Sources</a>
+        <a href="https://discord.gg/jXJta9VT7U" target="_blank">Discord</a>
+    </div>
+    <div class="main-content">
+        <h1>YashiX</h1>
+        <p>Discover the next level of YashiX!</p>
+        <a href="https://files.catbox.moe/d7zxkr.rar" class="download-btn" download>Download YashiX</a>
+    </div>
+
+    <div class="background-effects">
+        <div class="moving-background"></div>
+        <div class="line-grid"></div>
+        <script>
+            function createParticles(count) {
+                const effectsContainer = document.querySelector('.background-effects');
+                for (let i = 0; i < count; i++) {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+                    particle.style.left = Math.random() * 100 + 'vw';
+                    particle.style.top = Math.random() * 100 + 'vh';
+                    particle.style.animationDelay = Math.random() * 4 + 's';
+                    particle.style.animationDuration = Math.random() * 3 + 3 + 's';
+                    effectsContainer.appendChild(particle);
+                }
+            }
+
+            document.addEventListener('click', (e) => {
+                const ripple = document.createElement('div');
+                ripple.className = 'ripple';
+                ripple.style.left = e.pageX + 'px';
+                ripple.style.top = e.pageY + 'px';
+                document.querySelector('.background-effects').appendChild(ripple);
+                setTimeout(() => ripple.remove(), 800);
+            });
+
+            document.querySelector('.download-btn').addEventListener('mouseenter', () => {
+                const btn = document.querySelector('.download-btn');
+                const rect = btn.getBoundingClientRect();
+                for (let i = 0; i < 6; i++) {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+                    particle.style.left = (rect.left + rect.width / 2) + 'px';
+                    particle.style.top = (rect.top + rect.height / 2) + 'px';
+                    particle.style.animation = 'float 1.5s ease-out';
+                    document.querySelector('.background-effects').appendChild(particle);
+                    setTimeout(() => particle.remove(), 1500);
+                }
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                const trail = document.createElement('div');
+                trail.className = 'particle';
+                trail.style.left = e.pageX + 'px';
+                trail.style.top = e.pageY + 'px';
+                trail.style.animation = 'float 0.8s ease-out';
+                trail.style.opacity = '0.4';
+                document.querySelector('.background-effects').appendChild(trail);
+                setTimeout(() => trail.remove(), 800);
+            });
+
+            window.onload = function() {
+                if (window.innerWidth > 768) { // จำกัด particle บนเดสก์ท็อปเท่านั้น
+                    createParticles(40);
+                }
+            };
+        </script>
+    </div>
+</body>
+</html>
